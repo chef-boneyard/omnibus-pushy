@@ -15,15 +15,21 @@
 # limitations under the License.
 #
 
+# add_command "test", "Run the API test suite against localhost.", 2 do
+#   omnibus_path = [File.join(base_path, "bin"),
+#                   File.join(base_path, "embedded","bin"),
+#                   ENV['PATH']]
+#   ENV["PATH"] = omnibus_path.join(":")
+#   pedant_args = ARGV[3..-1]
+#   pedant_args = ["--smoke"] unless pedant_args.any?
+#   Dir.chdir(File.join(base_path, "embedded", "service", "oc-pushy-pedant"))
+#   pedant_config = File.join(etc_path, "pedant_config.rb")
+#   bundle = File.join(base_path, "embedded", "bin", "bundle")
+#   exec("#{bundle} exec ./oc-pushy-pedant -c #{pedant_config} #{pedant_args.join(' ')}")
+# end
+
+# Replace this hacky code with above "real" test command impl
+# when we can make the test command work.
 add_command "test", "Run the API test suite against localhost.", 2 do
-  omnibus_path = [File.join(base_path, "bin"),
-                  File.join(base_path, "embedded","bin"),
-                  ENV['PATH']]
-  ENV["PATH"] = omnibus_path.join(":")
-  pedant_args = ARGV[3..-1]
-  pedant_args = ["--smoke"] unless pedant_args.any?
-  Dir.chdir(File.join(base_path, "embedded", "service", "oc-pushy-pedant"))
-  pedant_config = File.join(etc_path, "pedant_config.rb")
-  bundle = File.join(base_path, "embedded", "bin", "bundle")
-  exec("#{bundle} exec ./oc-pushy-pedant -c #{pedant_config} #{pedant_args.join(' ')}")
+  puts "Sorry! The test command is down for maintenance. Please run the tests manually."
 end
