@@ -15,32 +15,16 @@
 # limitations under the License.
 #
 
-name "opscode-push-jobs-server"
+name "opscode-push-jobs-client"
 
-replaces        "opscode-push-jobs-server"
-install_path    "/opt/opscode-push-jobs-server"
-build_version Omnibus::BuildVersion.new.semver
+install_path    "/opt/opscode-push-jobs-client"
+build_version   Omnibus::BuildVersion.new.semver
 build_iteration "1"
 
-runtime_dependencies [ "private-chef" ]
-deps = []
+# Hacky but allows us to set the embedded chef version that is installed.
+# Once omnibus-ruby supports proper software definition version overrides
+# (either externally or at the project level) this can go away.
+ENV['CHEF_GIT_REV'] ||= "master"
 
-# global
-deps << "chef-gem"
-deps << "preparation"
-deps << "pushy-server-cookbooks"
-deps << "pushy-server-scripts"
-deps << "opscode-pushy-server-ctl"
-deps << "runit"
+dependencies ["preparation","chef-gem","opscode-pushy-client","version-manifest"]
 
-deps << "opscode-pushy-server"
-deps << "oc-pushy-pedant"
-
-
-# version manifest file
-deps << "version-manifest"
-
-dependencies deps
-
-exclude "\.git*"
-exclude "bundler\/git"
