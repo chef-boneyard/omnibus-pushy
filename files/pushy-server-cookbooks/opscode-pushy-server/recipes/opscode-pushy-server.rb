@@ -32,9 +32,9 @@ pushy_sasl_log_dir = File.join(pushy_log_dir, "sasl")
   end
 end
 
-link "#{node['pushy']['install_path']}/embedded/service/opscode-pushy-server/log" do
-  to pushy_log_dir
-end
+# link "#{node['pushy']['install_path']}/embedded/service/opscode-pushy-server/log" do
+#   to pushy_log_dir
+# end
 
 template "#{node['pushy']['install_path']}/embedded/service/opscode-pushy-server/bin/opscode-pushy-server" do
   source "opscode-pushy-server.erb"
@@ -58,27 +58,26 @@ link "#{node['pushy']['install_path']}/embedded/service/opscode-pushy-server/etc
   to pushy_config
 end
 
-runit_service "opscode-pushy-server" do
-  options({
-    :log_directory => pushy_log_dir,
-    :svlogd_size => node['pushy']['opscode-pushy-server']['svlogd_size'],
-    :svlogd_num  => node['pushy']['opscode-pushy-server']['svlogd_num']
-  }.merge(params))
+enterprise::component_runit_service "opscode-pushy-server" do
+  # explicitly specifying things here until things are refactored
+  # enough to look in the same place for parameters on EC and Pushy
+  log_directory node['pushy']['opscode-pushy-server']['log_directory']
+  svlogd_size   node['pushy']['opscode-pushy-server']['log_rotation']['file_maxbytes']
+  svlogd_num    node['pushy']['opscode-pushy-server']['log_rotation']['num_to_keep']
+  ha            node['pushy']['opscode-pushy-server']['ha']
 end
 
 # Until we migrate Pushy over to using the same runit tooling as
 # Enterprise Chef, we'll 'manually' drop off this sentinel file, which
 # indicates it is an HA service and should be managed as such by keepalived.
-if node['private_chef']['topology'] == 'ha'
-  file "#{node['runit']['sv_dir']}/opscode-pushy-server/keepalive_me" do
-    action :create
-  end
-end
+# if node['private_chef']['topology'] == 'ha'
+#   file "#{node['runit']['sv_dir']}/opscode-pushy-server/keepalive_me" do
+#     action :create
+#   end
+# end
 
 if node['pushy']['bootstrap']['enable']
   execute "/usr/bin/private-chef-ctl start opscode-pushy-server" do
     retries 20
   end
 end
-
-
