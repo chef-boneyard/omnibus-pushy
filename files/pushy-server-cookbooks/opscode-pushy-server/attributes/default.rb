@@ -18,7 +18,7 @@
 ###
 # High level options
 ###
-default['pushy']['install_path'] = "/opt/opscode-push-jobs-server"
+default['pushy']['install_path'] = "/opt/opscode"
 
 default['pushy']['bootstrap']['enable'] = true
 default['pushy']['chef_base_path'] = "/opt/opscode"
@@ -28,7 +28,7 @@ default['pushy']['chef_base_path'] = "/opt/opscode"
 ####
 default['pushy']['opscode-pushy-server']['enable'] = true
 default['pushy']['opscode-pushy-server']['ha'] = false
-default['pushy']['opscode-pushy-server']['dir'] = "/var/opt/opscode-push-jobs-server/opscode-pushy-server"
+default['pushy']['opscode-pushy-server']['dir'] = "/var/opt/opscode/opscode-pushy-server"
 
 default['pushy']['opscode-pushy-server']['log_directory'] = "/var/log/opscode/opscode-pushy-server"
 default['pushy']['opscode-pushy-server']['log_rotation']['file_maxbytes'] = 104857600
