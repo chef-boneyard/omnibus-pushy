@@ -31,7 +31,10 @@ end.run_action(:create)
 if File.exists?("/etc/opscode/chef-server-running.json")
   private_chef = JSON.parse(IO.read("/etc/opscode/chef-server-running.json"))
 end
-node.consume_attributes({"private_chef" => private_chef['private_chef']})
+node.consume_attributes({
+  'private_chef' => private_chef['private_chef'],
+  'runit'        => private_chef['runit']
+})
 
 PushJobsServer[:node] = node
 if File.exists?("/etc/opscode-push-jobs-server/opscode-push-jobs-server.rb")
@@ -68,7 +71,8 @@ directory "/var/opt/opscode-push-jobs-server" do
 end
 
 # Install our runit instance
-include_recipe "runit"
+
+include_recipe "enterprise::runit"
 
 include_recipe "opscode-pushy-server::postgresql" if is_data_master?
 
