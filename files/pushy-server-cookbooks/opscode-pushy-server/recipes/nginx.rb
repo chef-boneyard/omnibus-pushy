@@ -18,9 +18,7 @@ nginx_addon_dir = File.join(nginx_etc_dir, "addon.d")
     owner "root"
     group "root"
     mode "0644"
-    notifies :restart, 'service[nginx]' if OmnibusHelper.should_notify?("nginx",
-                                                                        node['pushy']['chef_base_path'],
-                                                                        "private-chef-ctl")
+    notifies :restart, 'service[nginx]' if OmnibusHelper.should_notify?("nginx")
   end
 end
 

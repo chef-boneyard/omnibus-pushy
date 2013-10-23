@@ -18,19 +18,14 @@
 require 'chef/shell_out'
 
 class OmnibusHelper
-  def self.should_notify?(service_name,
-                          path = "/opt/opscode",
-                          command = "private-chef-ctl")
-    File.symlink?("#{path}/service/#{service_name}") && check_status(service_name, path, command)
+  def self.should_notify?(service_name)
+    File.symlink?("/opt/opscode/service/#{service_name}") && check_status(service_name)
   end
 
-  def self.check_status(service_name,
-                        path="/opt/opscode",
-                        command="private-chef-ctl")
-    o = Mixlib::ShellOut.new("#{path}/bin/#{command} status #{service_name}")
+  def self.check_status(service_name)
+    o = Mixlib::ShellOut.new("/opt/opscode/bin/private-chef-ctl status #{service_name}")
     o.run_command
     o.exitstatus == 0 ? true : false
   end
 
 end
-
