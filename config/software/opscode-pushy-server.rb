@@ -16,7 +16,7 @@
 #
 
 name "opscode-pushy-server"
-version "1.0.0"
+version "cm/OC-9976-0MQ3"
 
 dependency "erlang"
 dependency "rebar"
