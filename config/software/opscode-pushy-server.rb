@@ -34,6 +34,8 @@ source :git => "git@github.com:opscode/opscode-pushy-server.git"
 relative_path "opscode-pushy-server"
 
 env = {
+  # Keep this in sync with libzmq.rb
+  "ZEROMQ_VERSION" => "3.2.4",
   "PATH" => "#{install_dir}/embedded/bin:#{ENV["PATH"]}",
   "LDFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
   "CFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",

@@ -17,6 +17,7 @@
 
 # We use the version in util-linux, and only build the libuuid subdirectory
 name "libzmq"
+# Keep this in sync with opscode-pushy-server.rb
 version "v3.2.4"
 
 dependency "autoconf"
