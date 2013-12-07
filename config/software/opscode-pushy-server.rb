@@ -16,7 +16,7 @@
 #
 
 name "opscode-pushy-server"
-version "1.0.0"
+version "cm/OC-9976-0MQ3"
 
 dependency "erlang"
 dependency "rebar"
@@ -34,6 +34,8 @@ source :git => "git@github.com:opscode/opscode-pushy-server.git"
 relative_path "opscode-pushy-server"
 
 env = {
+  # Keep this in sync with libzmq.rb
+  "ZEROMQ_VERSION" => "3.2.4",
   "PATH" => "#{install_dir}/embedded/bin:#{ENV["PATH"]}",
   "LDFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
   "CFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
