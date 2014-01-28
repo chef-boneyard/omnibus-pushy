@@ -16,7 +16,7 @@
 #
 
 name "opscode-pushy-server"
-version "1.0.1"
+version "cm/gen_zmq2"
 
 dependency "erlang"
 dependency "rebar"
