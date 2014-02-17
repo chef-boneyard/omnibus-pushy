@@ -16,7 +16,7 @@
 #
 
 name "opscode-pushy-server"
-version "1.0.1"
+version "cm/sqerl_config"
 
 dependency "erlang"
 dependency "rebar"
