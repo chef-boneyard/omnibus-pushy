@@ -19,7 +19,6 @@ name       "opscode-push-jobs-server"
 maintainer "Opscode, Inc."
 homepage   "http://www.opscode.com"
 
-replaces        "opscode-push-jobs-server"
 install_path    "/opt/opscode-push-jobs-server"
 build_version   Omnibus::BuildVersion.new.semver
 build_iteration 1
