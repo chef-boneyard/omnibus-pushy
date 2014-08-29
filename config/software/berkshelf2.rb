@@ -16,7 +16,7 @@
 #
 
 name "berkshelf2"
-default_version "2.0.17"
+default_version "2.0.18"
 
 dependency "ruby"
 dependency "rubygems"
