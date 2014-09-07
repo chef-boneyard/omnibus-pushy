@@ -26,8 +26,6 @@ build_iteration 1
 
 override :berkshelf, version: "v2.0.15"
 
-runtime_dependency "private-chef"
-
 # creates required build directories
 dependency "preparation"
 
