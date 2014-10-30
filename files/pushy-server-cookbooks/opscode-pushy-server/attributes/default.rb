@@ -57,6 +57,7 @@ default['pushy']['opscode-pushy-server']['enable_graphite'] = false
 default['pushy']['opscode-pushy-server']['graphite_host'] = 'localhost'
 default['pushy']['opscode-pushy-server']['graphite_port'] = '2003'
 default['pushy']['opscode-pushy-server']['keyring_dir'] = '/etc/opscode-push-jobs-server'
+default['pushy']['opscode-pushy-server']['erchef_port'] = 80
 
 default['pushy']['opscode-pushy-server']['chef_api_version'] = '11.1.0' # API Version used to query Erchef
 

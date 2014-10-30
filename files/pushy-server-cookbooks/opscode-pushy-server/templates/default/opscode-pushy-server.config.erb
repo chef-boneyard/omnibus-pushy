@@ -105,6 +105,10 @@
                         {metrics_module, folsom_metrics},
                         {enable_graphite, <%= @enable_graphite %> }
                        ]},
+ {erchef, [
+           {hostname, "<%= node['private_chef']['lb']['api_fqdn'] %>"},
+           {port, <%= @erchef_port %>}
+           ]},
  {folsom_graphite,[{application, "pushy"},
                    {graphite_host, "<%= @graphite_host %>"},
                    {graphite_port, <%= @graphite_port %>}
