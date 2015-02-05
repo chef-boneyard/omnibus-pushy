@@ -95,7 +95,7 @@
           {log_dir, "<%= @log_directory %>" },
 
           %% Used for service to service calls
-          {erchef_root_url, "https://<%= node['private_chef']['lb']['api_fqdn'] %>"},
+          {erchef_root_url, <%= @erchef_url %>"},
           {chef_api_version, "<%= @chef_api_version %>"}, %% x-chef-version HTTP header value
 
           %% Zeromq tunings

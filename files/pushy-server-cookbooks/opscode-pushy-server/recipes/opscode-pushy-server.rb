@@ -40,6 +40,16 @@ end
 # some configurations, and eventually we will need to protect against that.
 node.default['pushy']['opscode-pushy-server']['server_name_advertised'] ||=  node['pushy']['opscode-pushy-server']['vip']
 
+node.default['pushy']['opscode-pushy-server']['erchef_url'] =
+  case node['pushy']['opscode-pushy-server']['erchef_url']
+  when :localhost
+    "https://localhost"
+  when :api_fqdn
+    "https://#{node['private_chef']['lb']['api_fqdn']}"
+  else
+    node['pushy']['opscode-pushy-server']['erchef_url']
+  end
+
 template "#{node['pushy']['install_path']}/embedded/service/opscode-pushy-server/bin/opscode-pushy-server" do
   source "opscode-pushy-server.erb"
   owner "root"
