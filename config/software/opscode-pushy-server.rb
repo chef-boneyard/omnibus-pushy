@@ -15,7 +15,8 @@
 #
 
 name "opscode-pushy-server"
-default_version "1.2.0"
+default_version "ssd/versioned-principal-api"
+
 
 source git:  "git://github.com/opscode/opscode-pushy-server"
 
