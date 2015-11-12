@@ -15,7 +15,7 @@
 #
 
 name "oc-pushy-pedant"
-default_version "master"
+default_version "ma/better_logging"
 
 # TODO: use the public git:// uri once this repo is public
 source git: "git@github.com:opscode/oc-pushy-pedant"
