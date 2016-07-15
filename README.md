@@ -1,6 +1,12 @@
-# opscode-push-jobs Omnibus project
 
-This project creates full-stack platform-specific packages for `opscode-push-jobs`!
+# DEPRECATED opscode-push-jobs Omnibus project
+
+*DEPRECATED: Moved to opscode-pushy-server repository*
+
+New development on this component of the Push Jobs server now happens in
+the Push Jobs Server repository:
+
+https://github.com/chef/opscode-pushy-server
 
 ## Installation
 
@@ -134,4 +140,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
